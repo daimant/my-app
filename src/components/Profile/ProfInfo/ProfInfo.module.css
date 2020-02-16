@@ -1,0 +1,13 @@
+.backgroundImg {
+  max-width: 1000px;
+  max-height: 200px;
+}
+
+.avatar {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.descriptionBlock {
+  padding: 10px;
+}
