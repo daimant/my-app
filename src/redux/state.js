@@ -1,6 +1,5 @@
 'use strict';
-
-import classes from "../components/NavBar/NavBar.module.css";
+import {rerenderEntireTree} from "../render";
 
 let dialogsData = [
   {id: 1, name: "Андрей"},
@@ -18,18 +17,18 @@ let messagesData = [
   {id: 3, message: "Что делаешь?"},
 ];
 let postsData = [
-  {id: 1, message: "hello, how u feel?", likeCounts: "0", img: "https://clck.ru/MDDf7"},
-  {id: 2, message: "where my money?", img: 'https://clck.ru/MDDgs', likeCounts: "95"},
-  {id: 3, message: "i need help", img: "https://clck.ru/MDDj5", likeCounts: "110"},
-  {id: 4, message: "i want use props", img: "https://clck.ru/MDDid", likeCounts: "11"},
+  {id: 1, message: "hello, how u feel?", img: "https://clck.ru/MDDf7", likeCounts: 0},
+  {id: 2, message: "where my money?", img: 'https://clck.ru/MDDgs', likeCounts: 95},
+  {id: 3, message: "i need help", img: "https://clck.ru/MDDj5", likeCounts: 110},
+  {id: 4, message: "i want use props", img: "https://clck.ru/MDDid", likeCounts: 11},
 ];
 let navigationsData = [
-  {link: "/profile", classes: classes.activeLink, text: 'Профиль'},
-  {link: "/friends", classes: classes.activeLink, text: 'Друзья'},
-  {link: "/dialogs", classes: classes.activeLink, text: 'Сообщения'},
-  {link: "/news", classes: classes.activeLink, text: 'Новости'},
-  {link: "/music", classes: classes.activeLink, text: 'Музыка'},
-  {link: "/settings", classes: classes.activeLink, text: 'Настройки'},
+  {link: "/profile", text: 'Профиль'},
+  {link: "/friends", text: 'Друзья'},
+  {link: "/dialogs", text: 'Сообщения'},
+  {link: "/music", text: 'Музыка'},
+  {link: "/news", text: 'Новости'},
+  {link: "/settings", text: `Настройки` },
 ];
 let friendsData = [
   {id: 1, name: "Андрей", age: 29},
@@ -46,6 +45,17 @@ let state = {
   sideBap: {},
   friendsData,
   navigationsData
+};
+
+export let addPost = (postMessage) => {
+debugger;
+  let newPost = {
+    id: 5,
+    message: postMessage,
+    likeCounts: 0
+  };
+  state.profilePage.postsData.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;

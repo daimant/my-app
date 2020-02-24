@@ -9,13 +9,13 @@ const NavBar = (props) => {
   let navigationElement = props.state
   .map(d =>
     <div className={classes.item}>
-      <NavLink to={d.link} activeClassName={d.classes}>{d.text}</NavLink>
+      <NavLink to={d.link} activeClassName={classes.activeLink}>{d.text}</NavLink>
     </div>
   );
   
   return (
     <nav className={classes.nav}>
-      {navigationElement};
+      {navigationElement}
     </nav>
   )
 };
