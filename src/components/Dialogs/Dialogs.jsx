@@ -1,20 +1,21 @@
-'use strict';
-
-import React from 'react';
-import classes from './Dialogs.module.css';
+import React from "react";
+import classes from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
-const Dialogs = (props) => {
-  
-  let dialogElement = props.state.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>);
-  let messageElement = props.state.messagesData.map(m => <Message message={m.message}/>);
+const Dialogs = props => {
+  let dialogElement = props.state.dialogsData.map(d => (
+    <DialogItem name={d.name} id={d.id} />
+  ));
+  let messageElement = props.state.messagesData.map(m => (
+    <Message message={m.message} />
+  ));
   let addMessageElement = React.createRef();
   let addMessage = () => {
     let text = addMessageElement.current.value;
     alert(text);
   };
-  
+
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogsItems}>
@@ -27,7 +28,7 @@ const Dialogs = (props) => {
         <button onClick={addMessage}>Отправить</button>
       </div>
     </div>
-  )
+  );
 };
 
 export default Dialogs;

@@ -33,7 +33,10 @@
     ]
   },
   "devDependencies": {
-    "auto-import": "^0.1.4"
+    "auto-import": "^0.1.4",
+    "husky": "^4.2.3",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1"
   },
   "description": "my first react app",
   "main": "index.js",
@@ -42,5 +45,10 @@
     "url": "git repository: github.com/daimant/social-network"
   },
   "author": "Sergey Pomortsev",
-  "license": "ISC"
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }

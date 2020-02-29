@@ -1,16 +1,19 @@
-'use strict';
-import React from 'react';
-import classes from "./Profile.module.css"
-import MyPosts from './MyPosts/MyPosts'
-import ProfInfo from './ProfInfo/ProfInfo'
+import React from "react";
+import MyPosts from "./MyPosts/MyPosts";
+import ProfInfo from "./ProfInfo/ProfInfo";
 
-const Profile = (props) => {
+const Profile = props => {
   return (
     <div>
-      <ProfInfo/>
-      <MyPosts state={props.state.postsData} addPost={props.addPost}/>
+      <ProfInfo />
+      <MyPosts
+        postsData={props.profilePage.postsData}
+        newPostText={props.profilePage.newPostText}
+        addPost={props.addPost}
+        updateNewPostText={props.updateNewPostText}
+      />
     </div>
-  )
+  );
 };
 
 export default Profile;
