@@ -4,16 +4,22 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
 const Dialogs = props => {
-  let dialogElement = props.state.dialogsData.map(d => (
+  let state = props.dialogsPage;
+
+  let dialogElement = state.dialogsData.map(d => (
     <DialogItem name={d.name} id={d.id} />
   ));
-  let messageElement = props.state.messagesData.map(m => (
+  let messageElement = state.messagesData.map(m => (
     <Message message={m.message} />
   ));
-  let addMessageElement = React.createRef();
-  let addMessage = () => {
-    let text = addMessageElement.current.value;
-    alert(text);
+  let newMessageBody = state.newMessageBody;
+
+  let onSendMessageClick = () => {
+    props.sendMessageCreator();
+  };
+  let onNewMessageChange = el => {
+    let body = el.target.value;
+    props.updateNewMessageBody(body);
   };
 
   return (
@@ -23,9 +29,17 @@ const Dialogs = props => {
         {dialogElement}
       </div>
       <div className={classes.messages}>
-        {messageElement}
-        <textarea ref={addMessageElement}>Введите сообщение</textarea>
-        <button onClick={addMessage}>Отправить</button>
+        <div>{messageElement}</div>
+        <div>
+          <textarea
+            value={newMessageBody}
+            onChange={onNewMessageChange}
+            placeHolder="Введите сообщение"
+          ></textarea>
+        </div>
+        <div>
+          <button onClick={onSendMessageClick}>Отправить</button>
+        </div>
       </div>
     </div>
   );
