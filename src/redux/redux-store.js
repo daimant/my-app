@@ -4,13 +4,15 @@ import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import friendsReducer from "./friends-reducer";
 import navigationsReducer from "./navigations-reducer";
+import usersReducer from "./users-reducer";
 
 let reducers = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,
   sideBar: sidebarReducer,
   friendsData: friendsReducer,
-  navigationsData: navigationsReducer
+  navigationsData: navigationsReducer,
+  usersPage: usersReducer
 });
 
 let store = createStore(reducers);

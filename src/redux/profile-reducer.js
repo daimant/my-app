@@ -40,12 +40,16 @@ const profileReducer = (state = initialStore, action) => {
         img: "https://clck.ru/MDDf7",
         likeCounts: 0
       };
-      state.postsData.push(newPost);
-      state.newPostText = "";
-      return state;
+      return {
+        ...state,
+        postsData: [...state.postsData, newPost],
+        newPostText: ""
+      };
     case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      return {
+        ...state,
+        newPostText: action.newText
+      };
     default:
       return state;
   }

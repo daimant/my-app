@@ -32,6 +32,7 @@ const MyPosts = props => {
               onChange={onPostChange}
               ref={newPostElement}
               value={props.newPostText}
+              placeholder="Введите сообщение"
             />
           </div>
           <div>
