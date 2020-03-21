@@ -1,0 +1,85 @@
+.app-wrapper {
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+  grid-template-areas: "header header header" "nav content content";
+  grid-template-rows: 42px 1fr;
+  grid-template-columns: 1fr 10fr;
+  grid-gap: 10px;
+}
+.app-wrapper-content {
+  grid-area: content;
+  background-color: #e0ffff;
+}
+.Header_header__1VCKf {
+  grid-area: header;
+  background-color: #24587a;
+}
+.Header_header__1VCKf img {
+  width: 60px;
+}
+.NavBar_nav__1FWUI {
+  grid-area: nav;
+  background-color: #24587a;
+  padding: 20px;
+}
+.NavBar_item__2RAQQ a {
+  color: #fff;
+  text-decoration: none;
+}
+.NavBar_item__2RAQQ a.NavBar_activeLink__W7BJ4 {
+  color: gold;
+}
+.MyPosts_postsBlock__2ifKf {
+  padding: 10px;
+}
+.MyPosts_posts__3tZ1c {
+  margin-top: 10px;
+}
+.Post_item__ihtu9 {
+  color: #000;
+}
+.Post_item__ihtu9 img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+.ProfInfo_backgroundImg__1Lx_Y {
+  max-width: 1000px;
+  max-height: 200px;
+}
+.ProfInfo_avatar__3Lt15 {
+  max-height: 200px;
+  max-width: 200px;
+}
+.ProfInfo_descriptionBlock__37rUe {
+  padding: 10px;
+}
+.Dialogs_dialogs__2xRSA {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+.Dialogs_dialogsItems__2sNe2 {
+  padding: 10px;
+}
+.Dialogs_dialogsItems__2sNe2 .Dialogs_active__2sQhs {
+  color: gold;
+}
+.Dialogs_messages__1w_Up {
+  padding: 10px;
+}
+.Message_messages__11r0A .Message_message__1MOXo {
+  color: #000;
+}
+.DialogItem_dialog__3tDA2 a {
+  color: #000;
+  text-decoration: none;
+}
+.DialogItem_dialog__3tDA2 a.DialogItem_activeLink__1IQU6 {
+  color: gold;
+}
+.Users_usersPhoto__3osYH {
+  width: 100px;
+  height: 100px;
+}
+/*# sourceMappingURL=main.4712996f.chunk.css.map */
