@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
+import { followAPI, unfollowAPI } from "../../api/api";
 
 const Users = props => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -38,6 +39,7 @@ const Users = props => {
                 <img
                   src={u.photos.small !== null ? u.photos.small : userPhoto}
                   className={classes.usersPhoto}
+                  alt=""
                 />
               </NavLink>
             </div>
@@ -54,16 +56,31 @@ const Users = props => {
             <div>
               {u.followed ? (
                 <button
+                  disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
-                    props.unfollow(u.id);
+                    props.toggleFollowingProgress(true, u.id);
+                    unfollowAPI.unfollow(u).then(response => {
+                      debugger;
+                      if (response.resultCode === 0) {
+                        props.unfollow(u.id);
+                      }
+                      props.toggleFollowingProgress(false, u.id);
+                    });
                   }}
                 >
                   Отписаться
                 </button>
               ) : (
                 <button
+                  disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
-                    props.follow(u.id);
+                    props.toggleFollowingProgress(true, u.id);
+                    followAPI.follow(u).then(response => {
+                      if (response.resultCode === 0) {
+                        props.follow(u.id);
+                      }
+                      props.toggleFollowingProgress(false, u.id);
+                    });
                   }}
                 >
                   Подписаться
