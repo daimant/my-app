@@ -2,12 +2,11 @@ import React from "react";
 import classes from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
-import { followAPI, unfollowAPI } from "../../api/api";
 
 const Users = props => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
-
+  // debugger
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
@@ -20,12 +19,13 @@ const Users = props => {
             return (
               <span
                 className={props.currentPage === p && classes.selectedPage}
-                onClick={e => {
+                onClick={() => {
                   props.onPageChanged(p);
                 }}
               >
-                {" "}
-                {p}{" "}
+                {""}
+                {p}
+                {""}
               </span>
             );
           }
@@ -46,7 +46,8 @@ const Users = props => {
           </span>
           <span>
             <span>
-              <div>{u.name}</div>
+              <div>Имя пользователя: {u.name}</div>
+              <div>ID пользователя: {u.id}</div>
               {/*<div>{u.status}</div>*/}
             </span>
             <span>
@@ -58,14 +59,7 @@ const Users = props => {
                 <button
                   disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
-                    props.toggleFollowingProgress(true, u.id);
-                    unfollowAPI.unfollow(u).then(response => {
-                      debugger;
-                      if (response.resultCode === 0) {
-                        props.unfollow(u.id);
-                      }
-                      props.toggleFollowingProgress(false, u.id);
-                    });
+                    props.unfollow(u.id);
                   }}
                 >
                   Отписаться
@@ -74,13 +68,7 @@ const Users = props => {
                 <button
                   disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
-                    props.toggleFollowingProgress(true, u.id);
-                    followAPI.follow(u).then(response => {
-                      if (response.resultCode === 0) {
-                        props.follow(u.id);
-                      }
-                      props.toggleFollowingProgress(false, u.id);
-                    });
+                    props.follow(u.id);
                   }}
                 >
                   Подписаться

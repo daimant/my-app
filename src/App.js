@@ -10,8 +10,9 @@ import Friends from "./components/Friends/Friends";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
-const App = () => {
+const App = props => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
           <Route path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/users" render={() => <UsersContainer />} />
+          <Route path="/login" render={() => <Login />} />
           <Route path="/friends" render={() => <Friends />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/news" render={() => <News />} />

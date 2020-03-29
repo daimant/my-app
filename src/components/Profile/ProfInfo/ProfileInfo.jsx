@@ -1,6 +1,7 @@
 import classes from "./ProfInfo.module.css";
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
+import userPhoto from "../../../assets/images/user.png";
 
 const ProfileInfo = props => {
   if (!props.profile) {
@@ -15,11 +16,16 @@ const ProfileInfo = props => {
       <div className={classes.descriptionBlock}>
         <img
           className={classes.avatar}
-          src={props.profile.photos.large}
+          src={
+            props.profile.photos.large !== null
+              ? props.profile.photos.large
+              : userPhoto
+          }
           alt=""
         />
         {/*<img className={classes.avatar} src="https://clck.ru/MDmXR" />*/}
-        descr
+        <div>ID: {props.profile.userId}</div>
+        <div>Имя: {props.profile.fullName}</div>
       </div>
     </div>
   );

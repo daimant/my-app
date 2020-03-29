@@ -11,17 +11,20 @@ export const usersAPI = {
     return instance
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then(response => response.data);
+  },
+  follow: (userId = 1) => {
+    return instance.post(`follow/${userId}`).then(response => response.data);
+  },
+  unfollow: (userId = 1) => {
+    return instance.delete(`follow/${userId}`).then(response => response.data);
+  },
+  getProfile: userId => {
+    return instance.get(`profile/` + userId);
   }
 };
 
-export const followAPI = {
-  follow: (u = 1) => {
-    return instance.post(`follow/${u.id}`).then(response => response.data);
-  }
-};
-
-export const unfollowAPI = {
-  unfollow: (u = 1) => {
-    return instance.delete(`follow/${u.id}`).then(response => response.data);
+export const authAPI = {
+  me: () => {
+    return instance.get(`auth/me`);
   }
 };
