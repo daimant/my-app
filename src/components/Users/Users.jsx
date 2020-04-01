@@ -14,6 +14,7 @@ const Users = props => {
   return (
     <div>
       <div>
+        {/* eslint-disable-next-line array-callback-return */}
         {pages.map(p => {
           if (p > props.currentPage - 5 && p < props.currentPage + 5) {
             return (
