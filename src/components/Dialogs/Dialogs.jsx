@@ -2,7 +2,9 @@ import React from "react";
 import classes from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import { Redirect } from "react-router-dom";
+import { Field, reduxForm } from "redux-form";
+import { Textarea } from "../common/FormsControls/FormsControls";
+import { maxLengthCreator, required } from "../../utils/validators/validators";
 
 const Dialogs = props => {
   let state = props.dialogsPage;
@@ -13,14 +15,9 @@ const Dialogs = props => {
   let messageElement = state.messagesData.map(m => (
     <Message message={m.message} />
   ));
-  let newMessageBody = state.newMessageBody;
 
-  let onSendMessageClick = () => {
-    props.sendMessageCreator();
-  };
-  let onNewMessageChange = el => {
-    let body = el.target.value;
-    props.updateNewMessageBody(body);
+  const addNewMessage = values => {
+    props.sendMessageCreator(values.newMessageBody);
   };
 
   return (
@@ -31,19 +28,34 @@ const Dialogs = props => {
       </div>
       <div className={classes.messages}>
         <div>{messageElement}</div>
-        <div>
-          <textarea
-            value={newMessageBody}
-            onChange={onNewMessageChange}
-            placeholder="Введите сообщение"
-          />
-        </div>
-        <div>
-          <button onClick={onSendMessageClick}>Отправить</button>
-        </div>
+        <AddMessageFormRedux onSubmit={addNewMessage} />
       </div>
     </div>
   );
 };
+
+const maxLength50 = maxLengthCreator(50);
+
+const AddMessageForm = props => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          component={Textarea}
+          name="newMessageBody"
+          placeholder="Введите сообщение"
+          validate={[required, maxLength50]}
+        />
+      </div>
+      <div>
+        <button>Отправить</button>
+      </div>
+    </form>
+  );
+};
+
+const AddMessageFormRedux = reduxForm({ form: "dialogAddMessageForm" })(
+  AddMessageForm
+);
 
 export default Dialogs;
