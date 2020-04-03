@@ -8,8 +8,7 @@ import {
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
-const MyPosts = props => {
-  debugger;
+const MyPosts = React.memo(props => {
   let postsElement = props.postsData.map(p => (
     <Post message={p.message} img={p.img} likeCounts={p.likeCounts} />
   ));
@@ -27,10 +26,8 @@ const MyPosts = props => {
       <div className={classes.posts}>{postsElement}</div>
     </div>
   );
-};
-
+});
 const maxLength10 = maxLengthCreator(10);
-
 const AddNewPostForm = props => {
   return (
     <form onSubmit={props.handleSubmit}>
@@ -48,7 +45,6 @@ const AddNewPostForm = props => {
     </form>
   );
 };
-
 const AddNewPostFormRedux = reduxForm({ form: "profileAddNewPostForm" })(
   AddNewPostForm
 );

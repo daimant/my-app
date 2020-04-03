@@ -601,7 +601,7 @@
               ((a = Object(ce.a)(
                 this,
                 (e = Object(re.a)(t)).call.apply(e, [this].concat(s))
-              )).getUsers = function() {
+              )).requestUsers = function() {
                 0 === a.props.users.length &&
                   me
                     .get("https://social-network.samuraijs.com/api/1.0/users")

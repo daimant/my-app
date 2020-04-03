@@ -2,7 +2,7 @@ import classes from "./ProfInfo.module.css";
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/user.png";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = props => {
   if (!props.profile) {
@@ -24,13 +24,13 @@ const ProfileInfo = props => {
           }
           alt=""
         />
-        <ProfileStatus
+        <div>Имя: {props.profile.fullName}</div>
+        <div>ID: {props.profile.userId}</div>
+        <ProfileStatusWithHooks
           status={props.status}
           updateStatus={props.updateStatus}
         />
         {/*<img className={classes.avatar} src="https://clck.ru/MDmXR" />*/}
-        <div>ID: {props.profile.userId}</div>
-        <div>Имя: {props.profile.fullName}</div>
       </div>
     </div>
   );
