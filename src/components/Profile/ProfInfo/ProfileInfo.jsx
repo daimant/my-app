@@ -1,36 +1,28 @@
 import classes from "./ProfInfo.module.css";
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
-import userPhoto from "../../../assets/images/user.png";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import defaultProfilePicture from "../../../assets/images/user.png";
+import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = props => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
+  if (!profile) {
     return <Preloader />;
   }
-
   return (
     <div>
-      {/*<div>*/}
-      {/*  <img className={classes.backgroundImg} src='https://clck.ru/MDmXg'/>*/}
-      {/*</div>*/}
       <div className={classes.descriptionBlock}>
         <img
           className={classes.avatar}
           src={
-            props.profile.photos.large !== null
-              ? props.profile.photos.large
-              : userPhoto
+            profile.photos.large !== null
+              ? profile.photos.large
+              : defaultProfilePicture
           }
-          alt=""
+          alt={defaultProfilePicture}
         />
-        <div>Имя: {props.profile.fullName}</div>
-        <div>ID: {props.profile.userId}</div>
-        <ProfileStatusWithHooks
-          status={props.status}
-          updateStatus={props.updateStatus}
-        />
-        {/*<img className={classes.avatar} src="https://clck.ru/MDmXR" />*/}
+        <div>Имя: {profile.fullName}</div>
+        <div>ID: {profile.userId}</div>
+        <ProfileStatus status={status} updateStatus={updateStatus} />
       </div>
     </div>
   );

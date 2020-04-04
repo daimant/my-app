@@ -8,19 +8,25 @@ import {
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
-const MyPosts = React.memo(props => {
-  let postsElement = props.postsData.map(p => (
-    <Post message={p.message} img={p.img} likeCounts={p.likeCounts} />
+const MyPosts = React.memo(({ postsData, addPost }) => {
+  let postsElement = postsData.map(p => (
+    <Post
+      message={p.message}
+      img={p.img}
+      likeCounts={p.likeCounts}
+      id={p.id}
+      key={p.id}
+    />
   ));
 
   let onAddPost = values => {
-    props.addPost(values.newPostText);
+    addPost(values.newPostText);
   };
 
   return (
     <div className={classes.postsBlock}>
       <div>
-        <h3> My posts </h3>
+        <h3> Стена </h3>
         <AddNewPostFormRedux onSubmit={onAddPost} />
       </div>
       <div className={classes.posts}>{postsElement}</div>
@@ -40,7 +46,7 @@ const AddNewPostForm = props => {
         />
       </div>
       <div>
-        <button> Добавить пост </button>
+        <button> Добавить пост</button>
       </div>
     </form>
   );

@@ -12,9 +12,9 @@ let initialStore = {
   messagesData: [
     { id: 1, message: "Привет" },
     { id: 2, message: "Yo" },
-    { id: 2, message: "Как дела" },
-    { id: 3, message: "Привет" },
-    { id: 3, message: "Что делаешь?" }
+    { id: 3, message: "Как дела" },
+    { id: 4, message: "Привет" },
+    { id: 5, message: "Что делаешь?" }
   ]
 };
 
@@ -30,7 +30,6 @@ const dialogsReducer = (state = initialStore, action) => {
       return state;
   }
 };
-
 export const sendMessageCreator = newMessageBody => ({
   type: SEND_MESSAGE,
   newMessageBody

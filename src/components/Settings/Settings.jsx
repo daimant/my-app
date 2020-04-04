@@ -1,8 +1,7 @@
 import React from "react";
-import classes from "./Settings.module.css";
 
-const Settings = props => {
-  return <div>Settings</div>;
+const Settings = () => {
+  return <div>Здесь скоро будут настройки</div>;
 };
 
 export default Settings;
