@@ -1,4 +1,9 @@
 .usersPhoto {
-  width: 100px;
-  height: 100px;
+  max-width: 100px;
+  border-radius: 10px;
+}
+
+.usersList {
+  margin-top: 10px;
+  margin-left: 10px;
 }

@@ -2,7 +2,7 @@
   display: grid;
   width: 1200px;
   margin: 0 auto;
-  grid-template-areas: 'header header header' 'nav content content';
+  grid-template-areas: "header header header" "nav content content";
 
   grid-template-rows: 42px 1fr;
   grid-template-columns: 1fr 10fr;
@@ -12,7 +12,5 @@
 .app-wrapper-content {
   grid-area: content;
   background-color: lightcyan;
+  border-radius: 10px;
 }
-
-
-

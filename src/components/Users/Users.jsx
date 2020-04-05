@@ -1,6 +1,7 @@
 import React from "react";
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
+import classes from "./Users.module.css";
 
 const Users = ({
   currentPage,
@@ -20,7 +21,7 @@ const Users = ({
         onPageChanged={onPageChanged}
         pageSize={pageSize}
       />
-      <div>
+      <div className={classes.usersList}>
         {users.map(u => (
           <User
             key={u.id}

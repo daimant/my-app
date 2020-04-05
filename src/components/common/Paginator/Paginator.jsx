@@ -13,28 +13,21 @@ const Paginator = ({
     pages.push(i);
   }
   return (
-    <div>
+    <div className={classes.paginator}>
       {pages
         .filter(p => p > currentPage - 5 && p < currentPage + 5)
-        .map(p => (
+        .map((p, i) => (
           <span
-            key={p.toString()}
+            key={i}
             className={currentPage === p ? classes.selectedPage : undefined}
             onClick={() => {
               onPageChanged(p);
             }}
           >
-            {" "}
-            {p}{" "}
+            <div className={classes.page}>{p}</div>
           </span>
         ))}
     </div>
   );
 };
 export default Paginator;
-
-// map(p => {
-//   if (p > currentPage - 5 && p < currentPage + 5) {
-//     return ;
-//   }
-// })

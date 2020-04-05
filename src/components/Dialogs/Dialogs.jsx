@@ -10,11 +10,11 @@ class Dialogs extends React.Component {
   render() {
     let state = this.props.dialogsPage;
 
-    let dialogElement = state.dialogsData.map(d => (
-      <DialogItem name={d.name} id={d.id} key={d.id} />
+    let dialogElement = state.dialogsData.map((d, i) => (
+      <DialogItem name={d.name} id={d.id} key={i} />
     ));
-    let messageElement = state.messagesData.map(m => (
-      <MessageItem message={m.message} id={m.id} key={m.id} />
+    let messageElement = state.messagesData.map((m, i) => (
+      <MessageItem message={m.message} id={m.id} key={i} />
     ));
 
     const addNewMessage = values => {

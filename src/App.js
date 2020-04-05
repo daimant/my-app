@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import Music from "./components/Music/Music";
-import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
-import Friends from "./components/Friends/Friends";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
-import { connect, Provider } from "react-redux";
-import { compose } from "redux";
-import { initializeApp } from "./redux/app-reducer";
+import { Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+// import {HashRouter} from "react-router-dom";
 import Preloader from "./components/common/Preloader/Preloader";
-import store from "./redux/redux-store";
+import NavBar from "./components/NavBar/NavBar";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import { withSuspense } from "./HOC/withSuspense";
+
+const Login = React.lazy(() => import("./components/Login/Login"));
+const UsersContainer = React.lazy(() =>
+  import("./components/Users/UsersContainer")
+);
+const Friends = React.lazy(() => import("./components/Friends/Friends"));
+const Music = React.lazy(() => import("./components/Music/Music"));
+const News = React.lazy(() => import("./components/News/News"));
+const Settings = React.lazy(() => import("./components/Settings/Settings"));
+const DialogsContainer = React.lazy(() =>
+  import("./components/Dialogs/DialogsContainer")
+);
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
 
 class App extends Component {
   componentDidMount() {
@@ -35,15 +41,15 @@ class App extends Component {
           <div className="app-wrapper-content">
             <Route
               path="/profile/:userId?"
-              render={() => <ProfileContainer />}
+              render={withSuspense(ProfileContainer)}
             />
-            <Route path="/dialogs" render={() => <DialogsContainer />} />
-            <Route path="/users" render={() => <UsersContainer />} />
-            <Route path="/login" render={() => <Login />} />
-            <Route path="/friends" render={() => <Friends />} />
-            <Route path="/music" render={() => <Music />} />
-            <Route path="/news" render={() => <News />} />
-            <Route path="/settings" render={() => <Settings />} />
+            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route path="/users" render={withSuspense(UsersContainer)} />
+            <Route path="/friends" render={withSuspense(Friends)} />
+            <Route path="/music" render={withSuspense(Music)} />
+            <Route path="/news" render={withSuspense(News)} />
+            <Route path="/settings" render={withSuspense(Settings)} />
+            <Route path="/login" render={withSuspense(Login)} />
           </div>
         </div>
       </BrowserRouter>
@@ -51,19 +57,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({ initialized: state.app.initialized });
-const AppContainer = compose(
-  withRouter,
-  connect(mapStateToProps, { initializeApp })
-)(App);
-
-const AppSocialNetwork = () => {
-  return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <AppContainer />
-      </Provider>
-    </BrowserRouter>
-  );
-};
-export default AppSocialNetwork;
+export default App;

@@ -6,8 +6,18 @@
 .avatar {
   max-height: 200px;
   max-width: 200px;
+  border-radius: 10px;
 }
 
 .descriptionBlock {
   padding: 10px;
+}
+
+.contact {
+  padding-left: 10px;
+}
+
+.formSummaryError {
+  padding: 5px;
+  color: red;
 }

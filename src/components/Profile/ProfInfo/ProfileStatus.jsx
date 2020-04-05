@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ProfileStatus = props => {
+const ProfileStatus = ({ isOwner, updateStatus, ...props }) => {
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
   useEffect(() => {
@@ -8,11 +8,11 @@ const ProfileStatus = props => {
   }, [props.status]);
 
   const activateEditMode = () => {
-    setEditMode(true);
+    if (isOwner) setEditMode(true);
   };
   const deactivateEditMode = () => {
     setEditMode(false);
-    props.updateStatus(status);
+    updateStatus(status);
   };
   const onStatusChange = e => {
     setStatus(e.currentTarget.value);
@@ -23,7 +23,7 @@ const ProfileStatus = props => {
       {!editMode && (
         <div>
           <span onDoubleClick={activateEditMode}>
-            Статус: {props.status || "Статуса нет"}
+            <b>Статус:</b> {props.status || "Статуса нет"}
           </span>
         </div>
       )}
