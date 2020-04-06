@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 // import {HashRouter} from "react-router-dom";
 import Preloader from "./components/common/Preloader/Preloader";
@@ -39,17 +39,25 @@ class App extends Component {
           <HeaderContainer />
           <NavBar />
           <div className="app-wrapper-content">
-            <Route
-              path="/profile/:userId?"
-              render={withSuspense(ProfileContainer)}
-            />
-            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-            <Route path="/users" render={withSuspense(UsersContainer)} />
-            <Route path="/friends" render={withSuspense(Friends)} />
-            <Route path="/music" render={withSuspense(Music)} />
-            <Route path="/news" render={withSuspense(News)} />
-            <Route path="/settings" render={withSuspense(Settings)} />
-            <Route path="/login" render={withSuspense(Login)} />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <Redirect to={"/profile"} />}
+              />
+              <Route
+                path="/profile/:userId?"
+                render={withSuspense(ProfileContainer)}
+              />
+              <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+              <Route path="/users" render={withSuspense(UsersContainer)} />
+              <Route path="/friends" render={withSuspense(Friends)} />
+              <Route path="/music" render={withSuspense(Music)} />
+              <Route path="/news" render={withSuspense(News)} />
+              <Route path="/settings" render={withSuspense(Settings)} />
+              <Route path="/login" render={withSuspense(Login)} />
+              <Route path="*" render={() => <h1>Страница не найдена</h1>} />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>
