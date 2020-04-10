@@ -1,2 +1,0 @@
-(this["webpackJsonpsocial-network"]=this["webpackJsonpsocial-network"]||[]).push([[11],{298:function(n,t,e){"use strict";e.r(t);var s=e(0),a=e.n(s);t.default=function(){return a.a.createElement("div",null,"\u0417\u0434\u0435\u0441\u044c \u0441\u043a\u043e\u0440\u043e \u0431\u0443\u0434\u0443\u0442 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438")}}}]);
-//# sourceMappingURL=11.b09e1d13.chunk.js.map

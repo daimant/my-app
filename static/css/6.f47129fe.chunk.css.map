@@ -1,1 +1,0 @@
-{"version":3,"sources":["Paginator.module.css","Users.module.css"],"names":[],"mappings":"AAAA,+BACE,eACF,CCFA,yBACE,WAAY,CACZ,YACF","file":"6.f47129fe.chunk.css","sourcesContent":[".selectedPage {\r\n  font-weight: bold;\r\n}\r\n",".usersPhoto {\r\n  width: 100px;\r\n  height: 100px;\r\n}\r\n"]}

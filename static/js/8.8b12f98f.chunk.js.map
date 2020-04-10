@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Friends/Friends.jsx"],"names":["Friends"],"mappings":"wHAAA,2BAMeA,UAJC,WACd,OAAO","file":"static/js/8.8b12f98f.chunk.js","sourcesContent":["import React from \"react\";\r\n\r\nconst Friends = () => {\r\n  return <div>Здесь скоро будут друзья</div>;\r\n};\r\n\r\nexport default Friends;\r\n"],"sourceRoot":""}
